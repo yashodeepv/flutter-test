@@ -5,6 +5,21 @@ on:
     branches: [ main ]
 
 jobs:
+  version:
+    name: Create version number
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Fetch all history for all tags and branches
+      run: |
+        git fetch --prune --depth=10000
+    - name: Create version.txt with nuGetVersion
+      run: echo 1.0.0 > version.txt
+    - name: Upload version.txt
+      uses: actions/upload-artifact@v2
+      with:
+        name: gitversion
+        path: version.txt
   build:
     name: Build APK and Create release
     needs: [ version ]
