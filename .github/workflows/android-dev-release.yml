@@ -43,3 +43,10 @@ jobs:
         tag: "1.0.0"
         commit: ${{ github.sha }}
         prerelease: true
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: my-apk
+        path: build/app/outputs/flutter-apk/app-release.apk
+        retention-days: 5
+   
