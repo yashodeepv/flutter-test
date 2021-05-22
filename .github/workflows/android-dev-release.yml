@@ -21,7 +21,7 @@ jobs:
         name: gitversion
         path: version.txt
   build:
-    name: Build APK and Create release
+    name: Build APK and release
     needs: [ version ]
     runs-on: ubuntu-latest
     steps:
